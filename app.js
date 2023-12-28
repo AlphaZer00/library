@@ -32,3 +32,32 @@ submit.addEventListener("click", function createBookFromInput(e) {
 function showBookInputForm() {
     // Change input form's display property in CSS
 }
+
+//Display myLibrary content on DOM
+function displayBooks() {
+    const bookshelf = document.querySelector(".bookshelf");
+
+    for(let i=0; i < myLibrary.length; i++) {
+        const card = document.createElement("div");
+        const titleSpan = document.createElement("span");
+        const authorSpan = document.createElement("span");
+        const pagesSpan = document.createElement("span");
+        const readSpan = document.createElement("span");
+
+        const titleValue = myLibrary[i].title;
+        const authorValue = myLibrary[i].author;
+        const pagesValue = myLibrary[i].pageCount;
+        const readValue = myLibrary[i].pagesRead;
+
+        titleSpan.textContent = titleValue;
+        authorSpan.textContent = authorValue;
+        pagesSpan.textContent = pagesValue;
+        readSpan.textContent = readValue;
+
+        bookshelf.appendChild(card);
+        card.appendChild(titleSpan);
+        card.appendChild(authorSpan);
+        card.appendChild(pagesSpan);
+        card.appendChild(readSpan);
+    }
+}
