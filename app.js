@@ -1,7 +1,9 @@
 const myLibrary = [];
 const addButton = document.querySelector(".add");
+const submit = document.getElementById("submit");
 
 addButton.addEventListener("click", showBookInputForm);
+
 
 // Book constructor function
 function Book(title, author, pageCount, pagesRead) {
@@ -14,9 +16,18 @@ function Book(title, author, pageCount, pagesRead) {
     }
 }
 
-function createBookFromInput() {
-    // Call book constructor and add book object to myLibrary Array
-}
+//Construct book object from modal input and add to myLibrary
+submit.addEventListener("click", function createBookFromInput(e) {
+    e.preventDefault();
+    const titleInput = document.getElementById("bookTitle").value;
+    const authorInput = document.getElementById("bookAuthor").value;
+    const pagesInput = document.getElementById("bookPages").value;
+    const readPagesInput = document.getElementById("pagesRead").value;
+    
+    const newBook = new Book(titleInput, authorInput, pagesInput, readPagesInput);
+    myLibrary.push(newBook);
+    console.table(myLibrary);
+});
 
 function showBookInputForm() {
     // Change input form's display property in CSS
