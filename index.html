@@ -8,6 +8,27 @@
   <script src="app.js" defer></script>
 </head>
 <body>
-    <button class="add">Add Book</button>
+  <button class="add">Add Book</button>
+  <div class="modal">
+    <form>
+      <label for="bookTitle">
+        <span>Title:</span>
+      </label>
+      <input type="text" name="book_title" id="bookTitle" required>
+      <label for="bookAuthor">
+        <span>Author:</span>
+      </label>
+      <input type="text" name="book_author" id="bookAuthor" required>
+      <label for="bookPages">
+        <span>Number of Pages:</span>
+      </label>
+      <input type="number" name="book_pages_total" id="bookPages" pattern="^[0-9]+$">
+      <label for="pagesRead">
+        <span>Pages Read:</span>
+      </label>
+      <input type="number" name="book_pages_read" id="pagesRead" pattern="^[0-9]+$">
+      <input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
 </body>
 </html>
