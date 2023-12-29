@@ -1,9 +1,11 @@
 const myLibrary = [];
 const addButton = document.querySelector(".add");
 const submit = document.getElementById("submit");
+const wrapper = document.querySelector(".wrapper");
+const closeButton = document.querySelector(".close");
 
-addButton.addEventListener("click", showBookInputForm);
-
+addButton.addEventListener("click", toggleBookInputForm);
+closeButton.addEventListener("click", toggleBookInputForm);
 
 // Book constructor function
 function Book(title, author, pageCount, pagesRead) {
@@ -26,38 +28,37 @@ submit.addEventListener("click", function createBookFromInput(e) {
     
     const newBook = new Book(titleInput, authorInput, pagesInput, readPagesInput);
     myLibrary.push(newBook);
-    console.table(myLibrary);
+    displayBooks();
 });
 
-function showBookInputForm() {
-    // Change input form's display property in CSS
+
+function toggleBookInputForm() {
+    wrapper.classList.toggle("modal-hidden")
 }
 
 //Display myLibrary content on DOM
 function displayBooks() {
     const bookshelf = document.querySelector(".bookshelf");
 
-    for(let i=0; i < myLibrary.length; i++) {
-        const card = document.createElement("div");
-        const titleSpan = document.createElement("span");
-        const authorSpan = document.createElement("span");
-        const pagesSpan = document.createElement("span");
-        const readSpan = document.createElement("span");
+    const card = document.createElement("div");
+    const titleSpan = document.createElement("span");
+    const authorSpan = document.createElement("span");
+    const pagesSpan = document.createElement("span");
+    const readSpan = document.createElement("span");
 
-        const titleValue = myLibrary[i].title;
-        const authorValue = myLibrary[i].author;
-        const pagesValue = myLibrary[i].pageCount;
-        const readValue = myLibrary[i].pagesRead;
+    const titleValue = myLibrary[myLibrary.length-1].title;
+    const authorValue = myLibrary[myLibrary.length-1].author;
+    const pagesValue = myLibrary[myLibrary.length-1].pageCount;
+    const readValue = myLibrary[myLibrary.length-1].pagesRead;
 
-        titleSpan.textContent = titleValue;
-        authorSpan.textContent = authorValue;
-        pagesSpan.textContent = pagesValue;
-        readSpan.textContent = readValue;
+    titleSpan.textContent = titleValue;
+    authorSpan.textContent = authorValue;
+    pagesSpan.textContent = pagesValue;
+    readSpan.textContent = readValue;
 
-        bookshelf.appendChild(card);
-        card.appendChild(titleSpan);
-        card.appendChild(authorSpan);
-        card.appendChild(pagesSpan);
-        card.appendChild(readSpan);
-    }
+    bookshelf.appendChild(card);
+    card.appendChild(titleSpan);
+    card.appendChild(authorSpan);
+    card.appendChild(pagesSpan);
+    card.appendChild(readSpan);
 }
