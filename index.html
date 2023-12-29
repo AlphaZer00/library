@@ -9,26 +9,43 @@
 </head>
 <body>
   <button class="add">Add Book</button>
-  <div class="modal">
-    <form>
-      <label for="bookTitle">
-        <span>Title:</span>
-      </label>
-      <input type="text" name="book_title" id="bookTitle" required>
-      <label for="bookAuthor">
-        <span>Author:</span>
-      </label>
-      <input type="text" name="book_author" id="bookAuthor" required>
-      <label for="bookPages">
-        <span>Number of Pages:</span>
-      </label>
-      <input type="number" name="book_pages_total" id="bookPages" pattern="^[0-9]+$">
-      <label for="pagesRead">
-        <span>Pages Read:</span>
-      </label>
-      <input type="number" name="book_pages_read" id="pagesRead" pattern="^[0-9]+$">
-      <input type="submit" value="Submit" id="submit">
-    </form>
+  <div class="wrapper modal-hidden">
+    <div class="modal-container">
+      <div class="modal">
+        <button class="close">X</button>
+        <h1>Add New Book</h1>
+        <form>
+            <ul>
+              <li>
+                <input type="text" name="book_title" id="bookTitle" placeholder="a" required>
+                <label for="bookTitle">
+                  <span>Title:</span>
+                </label>
+              </li>
+              <li>
+                <input type="text" name="book_author" id="bookAuthor" placeholder="a" required>
+                <label for="bookAuthor">
+                  <span>Author:</span>
+                </label>
+              </li>
+              <li>
+                <input type="number" name="book_pages_total" id="bookPages" pattern="^[0-9]+$" placeholder="a">
+                <label for="bookPages">Number of Pages</label>
+              </li>
+              <li>
+                <input type="number" name="book_pages_read" id="pagesRead" pattern="^[0-9]+$" placeholder="a">
+                <label for="pagesRead">
+                  <span>Pages Read:</span>
+                </label>
+              </li>
+              <li>
+                <input type="submit" value="Submit" id="submit">
+              </li>
+            </ul>
+        </form>
+      </div>
+    </div>
   </div>
+  <div class="bookshelf"></div>
 </body>
 </html>
