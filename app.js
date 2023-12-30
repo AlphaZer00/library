@@ -21,44 +21,59 @@ function Book(title, author, pageCount, pagesRead) {
 //Construct book object from modal input and add to myLibrary
 submit.addEventListener("click", function createBookFromInput(e) {
     e.preventDefault();
+
     const titleInput = document.getElementById("bookTitle").value;
     const authorInput = document.getElementById("bookAuthor").value;
     const pagesInput = document.getElementById("bookPages").value;
     const readPagesInput = document.getElementById("pagesRead").value;
-    
+
+    if (!titleInput || !authorInput || !pagesInput || !readPagesInput) {
+        displayErrorMessage();
+        return;
+    }
+
     const newBook = new Book(titleInput, authorInput, pagesInput, readPagesInput);
     myLibrary.push(newBook);
+
+    document.getElementById("bookTitle").value = "";
+    document.getElementById("bookAuthor").value = "";
+    document.getElementById("bookPages").value = "";
+    document.getElementById("pagesRead").value = "";
+
     displayBooks();
 });
 
-
-function toggleBookInputForm() {
-    wrapper.classList.toggle("modal-hidden")
+function displayErrorMessage() {
+    document.querySelector(".error-field").textContent = "Please fill out all fields before submitting!"
 }
 
 //Display myLibrary content on DOM
 function displayBooks() {
     const bookshelf = document.querySelector(".bookshelf");
-
+    
     const card = document.createElement("div");
     const titleSpan = document.createElement("span");
     const authorSpan = document.createElement("span");
     const pagesSpan = document.createElement("span");
     const readSpan = document.createElement("span");
-
+    
     const titleValue = myLibrary[myLibrary.length-1].title;
     const authorValue = myLibrary[myLibrary.length-1].author;
     const pagesValue = myLibrary[myLibrary.length-1].pageCount;
     const readValue = myLibrary[myLibrary.length-1].pagesRead;
-
+    
     titleSpan.textContent = titleValue;
     authorSpan.textContent = authorValue;
     pagesSpan.textContent = pagesValue;
     readSpan.textContent = readValue;
-
+    
     bookshelf.appendChild(card);
     card.appendChild(titleSpan);
     card.appendChild(authorSpan);
     card.appendChild(pagesSpan);
     card.appendChild(readSpan);
+}
+
+function toggleBookInputForm() {
+    wrapper.classList.toggle("modal-hidden")
 }
