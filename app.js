@@ -54,8 +54,7 @@ function displayBooks() {
     const card = document.createElement("div");
     const titleSpan = document.createElement("span");
     const authorSpan = document.createElement("span");
-    const pagesSpan = document.createElement("span");
-    const readSpan = document.createElement("span");
+    const progressSpan = document.createElement("span");
     
     const titleValue = myLibrary[myLibrary.length-1].title;
     const authorValue = myLibrary[myLibrary.length-1].author;
@@ -63,21 +62,18 @@ function displayBooks() {
     const readValue = myLibrary[myLibrary.length-1].pagesRead;
     
     titleSpan.textContent = titleValue;
-    authorSpan.textContent = authorValue;
-    pagesSpan.textContent = pagesValue;
-    readSpan.textContent = readValue;
+    authorSpan.textContent = `By: ${authorValue}`;
+    progressSpan.textContent = `Pages Read: ${readValue} / ${pagesValue}`;
     
     bookshelf.appendChild(card);
     card.appendChild(titleSpan);
     card.appendChild(authorSpan);
-    card.appendChild(pagesSpan);
-    card.appendChild(readSpan);
+    card.appendChild(progressSpan);
 
     card.classList.add("card");
     titleSpan.classList.add("title");
     authorSpan.classList.add("author");
-    pagesSpan.classList.add("pages");
-    readSpan.classList.add("read");
+    progressSpan.classList.add("progress");
 }
 
 function toggleBookInputForm() {
