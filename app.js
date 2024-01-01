@@ -50,35 +50,52 @@ function displayErrorMessage() {
 //Display myLibrary content on DOM
 function displayBooks() {
     const bookshelf = document.querySelector(".bookshelf");
-    
-    const card = document.createElement("div");
-    const titleSpan = document.createElement("span");
-    const authorSpan = document.createElement("span");
-    const progressSpan = document.createElement("span");
-    const cardCloseButton = document.createElement("button");
-    
-    const titleValue = myLibrary[myLibrary.length-1].title;
-    const authorValue = myLibrary[myLibrary.length-1].author;
-    const pagesValue = myLibrary[myLibrary.length-1].pageCount;
-    const readValue = myLibrary[myLibrary.length-1].pagesRead;
-    
-    titleSpan.textContent = titleValue;
-    authorSpan.textContent = `By: ${authorValue}`;
-    progressSpan.textContent = `Pages Read: ${readValue} / ${pagesValue}`;
-    //Temporary value for close button
-    cardCloseButton.textContent = "X";
-    
-    bookshelf.appendChild(card);
-    card.appendChild(cardCloseButton);
-    card.appendChild(titleSpan);
-    card.appendChild(authorSpan);
-    card.appendChild(progressSpan);
 
-    card.classList.add("card");
-    cardCloseButton.classList.add("close");
-    titleSpan.classList.add("title");
-    authorSpan.classList.add("author");
-    progressSpan.classList.add("progress");
+    //clear the bookshelf element's children
+    while (bookshelf.firstChild) {
+        bookshelf.removeChild(bookshelf.lastChild);
+    }
+    
+    //Populate the bookshelf with elements created from myLibrary array
+    for (let i = 0; i < myLibrary.length; i++) {
+        //Create HTML elements
+        const card = document.createElement("div");
+        const titleSpan = document.createElement("span");
+        const authorSpan = document.createElement("span");
+        const progressSpan = document.createElement("span");
+        const cardCloseButton = document.createElement("button");
+
+        //Create variables from book object values
+        const titleValue = myLibrary[i].title;
+        const authorValue = myLibrary[i].author;
+        const pagesValue = myLibrary[i].pageCount;
+        const readValue = myLibrary[i].pagesRead;
+        
+
+        //Set HTML element content to object values
+        titleSpan.textContent = titleValue;
+        authorSpan.textContent = `By: ${authorValue}`;
+        progressSpan.textContent = `Pages Read: ${readValue} / ${pagesValue}`;
+        //Temporary value for close button
+        cardCloseButton.textContent = "X";
+        
+        //Add elements to DOM
+        bookshelf.appendChild(card);
+        card.appendChild(cardCloseButton);
+        card.appendChild(titleSpan);
+        card.appendChild(authorSpan);
+        card.appendChild(progressSpan);
+
+        //Add classes to elements
+        card.classList.add("card");
+        cardCloseButton.classList.add("close");
+        titleSpan.classList.add("title");
+        authorSpan.classList.add("author");
+        progressSpan.classList.add("progress");
+
+        //Add data attribute
+        card.dataset.index=i;
+    }
 }
 
 function toggleBookInputForm() {
