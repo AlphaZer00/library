@@ -72,6 +72,12 @@ function displayBooks() {
     card.appendChild(authorSpan);
     card.appendChild(pagesSpan);
     card.appendChild(readSpan);
+
+    card.classList.add("card");
+    titleSpan.classList.add("title");
+    authorSpan.classList.add("author");
+    pagesSpan.classList.add("pages");
+    readSpan.classList.add("read");
 }
 
 function toggleBookInputForm() {
