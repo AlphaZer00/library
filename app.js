@@ -55,6 +55,7 @@ function displayBooks() {
     const titleSpan = document.createElement("span");
     const authorSpan = document.createElement("span");
     const progressSpan = document.createElement("span");
+    const cardCloseButton = document.createElement("button");
     
     const titleValue = myLibrary[myLibrary.length-1].title;
     const authorValue = myLibrary[myLibrary.length-1].author;
@@ -64,13 +65,17 @@ function displayBooks() {
     titleSpan.textContent = titleValue;
     authorSpan.textContent = `By: ${authorValue}`;
     progressSpan.textContent = `Pages Read: ${readValue} / ${pagesValue}`;
+    //Temporary value for close button
+    cardCloseButton.textContent = "X";
     
     bookshelf.appendChild(card);
+    card.appendChild(cardCloseButton);
     card.appendChild(titleSpan);
     card.appendChild(authorSpan);
     card.appendChild(progressSpan);
 
     card.classList.add("card");
+    cardCloseButton.classList.add("close");
     titleSpan.classList.add("title");
     authorSpan.classList.add("author");
     progressSpan.classList.add("progress");
