@@ -22,6 +22,8 @@ function Book(title, author, pageCount, pagesRead) {
 submit.addEventListener("click", function createBookFromInput(e) {
     e.preventDefault();
 
+    toggleBookInputForm();
+
     const titleInput = document.getElementById("bookTitle").value;
     const authorInput = document.getElementById("bookAuthor").value;
     const pagesInput = document.getElementById("bookPages").value;
@@ -64,6 +66,9 @@ function displayBooks() {
         const authorSpan = document.createElement("span");
         const progressSpan = document.createElement("span");
         const cardCloseButton = document.createElement("button");
+        
+        //Add event listener to card close button
+        cardCloseButton.addEventListener("click", removeCard);
 
         //Create variables from book object values
         const titleValue = myLibrary[i].title;
@@ -99,5 +104,15 @@ function displayBooks() {
 }
 
 function toggleBookInputForm() {
-    wrapper.classList.toggle("modal-hidden")
+    wrapper.classList.toggle("modal-hidden");
+}
+
+const removeCard = function(e) {
+    let response = confirm("This will delete this book from your library. Are you Sure?");
+    if (response === false) {
+        return;
+    } else if (response === true) {
+        myLibrary.splice(e.target.parentNode.dataset.index);
+        e.target.parentNode.remove();
+    }
 }
