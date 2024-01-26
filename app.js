@@ -7,13 +7,15 @@ const closeButton = document.querySelector(".close");
 addButton.addEventListener("click", toggleBookInputForm);
 closeButton.addEventListener("click", toggleBookInputForm);
 
-// Book constructor function
-function Book(title, author, pageCount, pagesRead) {
-    this.title = title;
-    this.author = author;
-    this.pageCount = pageCount;
-    this.pagesRead = pagesRead;
-    this.info = function() {
+class Book {
+    constructor(title, author, pageCount, pagesRead) {
+        this.title = title;
+        this.author = author;
+        this.pageCount = pageCount;
+        this.pagesRead = pagesRead;
+    }
+
+    info() {
         message = `${title} by ${author}, Progress:${this.pagesRead} pages out of ${this.pageCount}`
     }
 }
