@@ -24,18 +24,18 @@ class Book {
 submit.addEventListener("click", function createBookFromInput(e) {
     e.preventDefault();
 
-    toggleBookInputForm();
-
+    
     const titleInput = document.getElementById("bookTitle").value;
     const authorInput = document.getElementById("bookAuthor").value;
     const pagesInput = document.getElementById("bookPages").value;
     const readPagesInput = document.getElementById("pagesRead").value;
-
+    
     if (!titleInput || !authorInput || !pagesInput || !readPagesInput) {
         displayErrorMessage();
         return;
     }
-
+    
+    toggleBookInputForm();
     const newBook = new Book(titleInput, authorInput, pagesInput, readPagesInput);
     myLibrary.push(newBook);
 
